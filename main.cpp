@@ -1,4 +1,7 @@
 #include "Jogadores.hpp"
+#include "Tabuleiro.hpp"
+#include "TicTacToe.hpp"
+#include "lig4.hpp"
 #include <iomanip>
 #include <iostream>
 #include <string>
@@ -74,7 +77,7 @@ void loadJogadores(vector<Jogadores> &jogadoresVector) {
           break;
         }
       }
-      jogador.reversisWins = stoi(aux, nullptr, 10);
+      jogador.reversiWins = stoi(aux, nullptr, 10);
       aux = "";
       i += 2;
 
@@ -85,7 +88,7 @@ void loadJogadores(vector<Jogadores> &jogadoresVector) {
           break;
         }
       }
-      jogador.reversisDefeats = stoi(aux, nullptr, 10);
+      jogador.reversiDefeats = stoi(aux, nullptr, 10);
       aux = "";
       i += 2;
 
@@ -96,19 +99,40 @@ void loadJogadores(vector<Jogadores> &jogadoresVector) {
           break;
         }
       }
-      jogador.lig4sWins = stoi(aux, nullptr, 10);
+      jogador.lig4Wins = stoi(aux, nullptr, 10);
       aux = "";
       i += 2;
 
       for (; i < line.size(); i++) {
-        if (line[i] != ';') {
+        if (line[i] != ',') {
           aux = aux + line[i];
         } else {
           break;
         }
       }
-      jogador.lig4sDefeats = stoi(aux, nullptr, 10);
+      jogador.lig4Defeats = stoi(aux, nullptr, 10);
       aux = "";
+      i += 2;
+
+      for (; i < line.size(); i++) {
+        if (line[i] != ',') {
+          aux = aux + line[i];
+        } else {
+          break;
+        }
+      }
+      jogador.tictactoeWins = stoi(aux, nullptr, 10);
+      aux = "";
+      i += 2;
+
+      for (; i < line.size(); i++) {
+        if (line[i] != '\n') {
+          aux = aux + line[i];
+        } else {
+          break;
+        }
+      }
+      jogador.tictactoeDefeats = stoi(aux, nullptr, 10);
 
       jogadoresVector.push_back(jogador);
     }
@@ -132,7 +156,6 @@ int main() {
   Jogadores Jogador1, Jogador2;
 
   while (1) {
-    cout << "primeiro while" << endl;
     cout << "Você deseja "
             "sign in (1)"
             " ou "
@@ -166,7 +189,6 @@ int main() {
   }
 
   while (1) {
-    cout << "segundo while" << endl;
     cout << "Você deseja "
             "sign in (1)"
             " ou "
@@ -204,31 +226,60 @@ int main() {
   }
 
   int gameMode = 0;
-  cout << "Que jogo gostariam de jogar?, Reversi (1) ou Lig4 (2)?" << endl;
+  cout << "Que jogo gostariam de jogar?, Reversi (1), Lig4 (2) ou Tic Tac Toe "
+          "(3)?"
+       << endl;
   cin >> gameMode;
 
-  switch (gameMode) {
-  case 1:
-    cout << "Reversi foi escolhido." << endl;
-    break;
-  case 2:
-    cout << "Lig4 foi escolhido." << endl;
-    break;
-  }
-
-  /*
-  if(gameMode == 1) {
+  if (gameMode == 1) {
     cout << "Reversi foi escolhido." << endl;
   }
-  if(gameMode == 2){
+  if (gameMode == 2) {
     cout << "Lig4 foi escolhido." << endl;
   }
-  if(gameMode == 3){
+  if (gameMode == 3) {
     cout << "Tic Tac Toe foi escolhido." << endl;
-  }
-  */
+    int x, y;
+    TicTacToe t;
+    t.criaTabuleiro();
+    int i = 0;
+    while (1) {
+      cin >> x;
+      cin >> y;
 
-  // falta a validação de quando um jogador ganha
+      char z = ' ';
+
+      if (i % 2 == 0) {
+        z = 'X';
+      }
+      if (i % 2 != 0) {
+        z = 'O';
+      }
+
+      t.validaJogada(x, y, z);
+      t.imprimeTabuleiro();
+      if (t.confereGanhador() == 1) {
+        cout << Jogador1.Apelido << " ganhou!" << endl;
+        Jogador1.victory = true;
+        Jogador1.atualizaEstatisticas(gameMode, jogadoresVector);
+        Jogador2.atualizaEstatisticas(gameMode, jogadoresVector);
+        break;
+      }
+      if (t.confereGanhador() == 2) {
+        cout << Jogador2.Apelido << " ganhou!" << endl;
+        Jogador2.victory = true;
+        Jogador1.atualizaEstatisticas(gameMode, jogadoresVector);
+        Jogador2.atualizaEstatisticas(gameMode, jogadoresVector);
+        break;
+      }
+      if (t.confereGanhador() == 3) {
+        cout << "Não há vencedores!" << endl;
+        continue;
+      }
+      i++;
+    }
+    t.liberaMemoria();
+  }
 
   return 0;
 }
