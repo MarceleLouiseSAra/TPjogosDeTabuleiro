@@ -273,7 +273,7 @@ int main() {
       }
       if (t.confereGanhador() == 3) {
         cout << "Não há vencedores!" << endl;
-        continue;
+        break;
       }
       i++;
     }
