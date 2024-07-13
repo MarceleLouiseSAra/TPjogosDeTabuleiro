@@ -248,7 +248,6 @@ int main() {
       cin >> y;
 
       char z = ' ';
-
       if (i % 2 == 0) {
         z = 'X';
       }

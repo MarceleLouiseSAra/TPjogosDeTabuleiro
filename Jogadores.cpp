@@ -165,7 +165,7 @@ void Jogadores::atualizaEstatisticas(int gameMode,
   for (it = jogadoresVector.begin(); it != jogadoresVector.end(); it++) {
     if ((*it).Apelido == this->Apelido) {
       if (gameMode == 1) {
-        if ((*it).victory) {
+        if (this->victory) {
           (*it).reversiWins++;
           break;
         } else {
@@ -174,7 +174,7 @@ void Jogadores::atualizaEstatisticas(int gameMode,
         }
       }
       if (gameMode == 2) {
-        if ((*it).victory) {
+        if (this->victory) {
           (*it).lig4Wins++;
           break;
         } else {
@@ -183,7 +183,7 @@ void Jogadores::atualizaEstatisticas(int gameMode,
         }
       }
       if (gameMode == 3) {
-        if ((*it).victory) {
+        if (this->victory) {
           (*it).tictactoeWins++;
           break;
         } else {
