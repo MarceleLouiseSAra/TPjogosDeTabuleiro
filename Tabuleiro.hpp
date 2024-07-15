@@ -14,10 +14,15 @@ class Tabuleiro{
   Tabuleiro();
 
   void criaTabuleiro();
-  
+
   void imprimeTabuleiro();
 
   void liberaMemoria();
+
+  virtual void validaJogada(int x, int y, char z);
+
+  virtual int confereGanhador() = 0;
+
 };
 
 #endif

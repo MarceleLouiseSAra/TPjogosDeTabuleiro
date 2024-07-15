@@ -8,12 +8,6 @@ TicTacToe::TicTacToe() {
   this->columns = 3;
 }
 
-void TicTacToe::validaJogada(int x, int y, char z) {
-  if (x < 3 && y < 3 && p[x][y] == ' ') {
-    p[x][y] = z;
-  }
-}
-
 int TicTacToe::confereGanhador() {
   for (int i = 0; i < rows; i++) {
     // valida as linhas horizontais:

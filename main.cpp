@@ -242,16 +242,17 @@ int main() {
     int x, y;
     TicTacToe t;
     t.criaTabuleiro();
-    int i = 0;
+    t.imprimeTabuleiro();
+    int jogadorAtual = 0;
     while (1) {
       cin >> x;
       cin >> y;
 
       char z = ' ';
-      if (i % 2 == 0) {
+      if (jogadorAtual % 2 == 0) {
         z = 'X';
       }
-      if (i % 2 != 0) {
+      if (jogadorAtual % 2 != 0) {
         z = 'O';
       }
 
@@ -275,7 +276,7 @@ int main() {
         cout << "Não há vencedores!" << endl;
         break;
       }
-      i++;
+      jogadorAtual++;
     }
     t.liberaMemoria();
   }
