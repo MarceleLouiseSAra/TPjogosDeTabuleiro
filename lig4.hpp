@@ -11,6 +11,12 @@ class lig4 : public Tabuleiro{
 
   lig4();
 
+  //virtual void imprimeTabuleiro() override;
+
+  virtual void validaJogada(int x, int y, char z) override;
+
+  virtual int confereGanhador() override;
+
 };
 
 #endif

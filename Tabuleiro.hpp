@@ -15,11 +15,13 @@ class Tabuleiro{
 
   void criaTabuleiro();
 
+  //virtual void imprimeTabuleiro() = 0;
+
+  void imprimeTabuleiro();
+
   void liberaMemoria();
 
   virtual void validaJogada(int x, int y, char z);
-
-  virtual void imprimeTabuleiro() = 0;
 
   virtual int confereGanhador() = 0;
 

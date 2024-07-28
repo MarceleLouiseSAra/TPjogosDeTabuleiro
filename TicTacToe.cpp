@@ -4,29 +4,30 @@
 #include <string>
 
 TicTacToe::TicTacToe() {
-  this->rows = 3;
-  this->columns = 3;
+  this->rows = 8;
+  this->columns = 8;
 }
 
-void TicTacToe::imprimeTabuleiro() {
-  string aux = "-";
-  for (int k = 0; k < this->columns; k++) {
-    cout << k << "  ";
-    aux += "--";
-  }
-  cout << '\n';
-  cout << aux;
-  for (int i = 0; i < rows; i++) {
-    cout << '\n';
-    for (int j = 0; j < columns; j++) {
-      cout << '|' << p[i][j];
-    }
-    cout << '|' << ' ' << i;
-    cout << '\n';
-    cout << aux;
-  }
-  cout << '\n';
-}
+// void TicTacToe::imprimeTabuleiro() {
+//   cout << '\n';
+//   string aux = "-";
+//   for (int k = 0; k < this->columns; k++) {
+//     cout << k << "  ";
+//     aux += "--";
+//   }
+//   cout << '\n';
+//   cout << aux;
+//   for (int i = 0; i < rows; i++) {
+//     cout << '\n';
+//     for (int j = 0; j < columns; j++) {
+//       cout << '|' << p[i][j];
+//     }
+//     cout << '|' << ' ' << i;
+//     cout << '\n';
+//     cout << aux;
+//   }
+//   cout << '\n';
+// }
 
 int TicTacToe::confereGanhador() {
   for (int i = 0; i < rows; i++) {
@@ -58,7 +59,7 @@ int TicTacToe::confereGanhador() {
       return 2;
     }
   }
-  if (p[0][2] == p[1][1] && p[0][2] == p[2][2] && p[2][0] != ' ') {
+  if (p[0][2] == p[1][1] && p[0][2] == p[2][0] && p[2][0] != ' ') {
     if (p[0][2] == 'X') { // caso o Jogador1 vença
       return 1;
     }
@@ -67,16 +68,22 @@ int TicTacToe::confereGanhador() {
     }
   }
   // caso ninguém vença
-  int i, j, a = 0;
-  for (i = 0; i < rows; i++) {
-    for (j = 0; j < columns; j++) {
+  bool empate = true;
+  for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < columns; j++) {
       if (p[i][j] == ' ') {
-        a = 1;
+        empate = false;
+        break;
       }
     }
+    if (!empate) {
+      break;
+    }
   }
-  if (!a) {
+
+  if (empate) {
     return 3;
   }
+
   return 0;
 }
