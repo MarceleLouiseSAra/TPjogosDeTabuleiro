@@ -4,7 +4,8 @@ SRC_DIR=src
 INCLUDE_DIR=include
 OBJ_DIR=obj
 
-all : jogosDeTabuleiro
+greetings:
+	@echo "Compilação realizada com sucesso!"
 
 $(OBJ_DIR)/Tabuleiro.o: $(INCLUDE_DIR)/Tabuleiro.hpp $(SRC_DIR)/Tabuleiro.cpp
 	$(CC) $(CFLAGS) -c $(SRC_DIR)/Tabuleiro.cpp -I$(INCLUDE_DIR) -o $(OBJ_DIR)/Tabuleiro.o
@@ -23,6 +24,10 @@ $(OBJ_DIR)/main.o: $(INCLUDE_DIR)/Tabuleiro.hpp $(INCLUDE_DIR)/Jogadores.hpp $(I
 
 jogosDeTabuleiro: $(OBJ_DIR)/main.o $(OBJ_DIR)/TicTacToe.o $(OBJ_DIR)/lig4.o $(OBJ_DIR)/Jogadores.o $(OBJ_DIR)/Tabuleiro.o
 	$(CC) $(CFLAGS) $^ -o $@
+
+all: jogosDeTabuleiro
+
+build: jogosDeTabuleiro greetings
 
 clean: $(OBJ_DIR)/main.o $(OBJ_DIR)/TicTacToe.o $(OBJ_DIR)/lig4.o $(OBJ_DIR)/Jogadores.o $(OBJ_DIR)/Tabuleiro.o
 	rm $^
