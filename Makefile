@@ -7,7 +7,7 @@ OBJ_DIR=obj
 all : jogos
 
 $(OBJ_DIR)/Tabuleiro.o: $(INCLUDE_DIR)/Tabuleiro.hpp $(SRC_DIR)/Tabuleiro.cpp
-	$(CC) $(CFLAGS) -c $(SRC_DIR)/Tabuleiro.cpp -I$(INCLUDE_DIR) -o $@
+	$(CC) $(CFLAGS) -c $(SRC_DIR)/Tabuleiro.cpp -I$(INCLUDE_DIR) -o $(OBJ_DIR)/Tabuleiro.o
 
 $(OBJ_DIR)/Jogadores.o: $(INCLUDE_DIR)/Jogadores.hpp $(SRC_DIR)/Jogadores.cpp
 	$(CC) $(CFLAGS) -c $(SRC_DIR)/Jogadores.cpp -I$(INCLUDE_DIR) -o $@
@@ -23,3 +23,6 @@ $(OBJ_DIR)/main.o: $(INCLUDE_DIR)/Tabuleiro.hpp $(INCLUDE_DIR)/Jogadores.hpp $(I
 
 jogos: $(OBJ_DIR)/main.o $(OBJ_DIR)/TicTacToe.o $(OBJ_DIR)/lig4.o $(OBJ_DIR)/Jogadores.o $(OBJ_DIR)/Tabuleiro.o
 	$(CC) $(CFLAGS) $^ -o $@
+
+clean: $(OBJ_DIR)/main.o $(OBJ_DIR)/TicTacToe.o $(OBJ_DIR)/lig4.o $(OBJ_DIR)/Jogadores.o $(OBJ_DIR)/Tabuleiro.o
+	rm $^
