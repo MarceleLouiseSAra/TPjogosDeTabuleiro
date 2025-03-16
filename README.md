@@ -9,7 +9,7 @@ foi realizado em grupo; neste repositório, encontra-se um ensaio do que viria a
 
 Em particular, chamo atenção para o uso de um arquivo *Makefile* para otimizar o processo de compilação; a sua utilização garante que arquivos que não sofreram alterações sejam recompilados desnecessariamente.
 
-## Modo de uso
+## Para executar,
 
 ```bash
 # gere o executável ao digitar, no terminal, o comando:
