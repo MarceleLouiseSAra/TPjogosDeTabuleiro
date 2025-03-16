@@ -5,7 +5,7 @@ e que utiliza da linguagem de programação *C++* para introduzir os conceitos q
 contribui para a criação de um código enxuto, modularizado (organizado em subdivisões, promovendo a indepedência entre diferentes partes do código) e escalável.
 
 O presente projeto se trata do desenvolvimento de jogos de tabuleiro, cuja interface com a qual o usuário interage é o próprio terminal de comando. Este trabalho foi 
-realizado em grupo; neste repositório, encontra-se um ensaio do que viria a ser o código final – e que encontra-se [aqui](https://github.com/jufernandino/Jogos-de-Tabuleiro).
+realizado em grupo; neste repositório, encontra-se um ensaio do que viria a ser o código final – e que se encontra [aqui](https://github.com/jufernandino/Jogos-de-Tabuleiro).
 
 Em particular, chamo atenção para o uso de um arquivo *Makefile* para otimizar o processo de compilação; a sua utilização garante que arquivos que não sofreram alterações sejam recompilados desnecessariamente.
 
